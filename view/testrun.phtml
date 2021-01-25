@@ -1,0 +1,46 @@
+<center>
+    <form method=POST>
+	<input type=hidden name=id value=<?php echo $id; ?>>
+
+	<div style="padding: 0px 0px 10px 0px;">
+	    <?php echo 'Тест: '.$test_name; ?>
+	</div>
+
+	<div style="text-align: left; background: #fff; padding: 5px;">
+	    <p><?php echo $descr; ?></p>
+	</div>
+
+	<div class='border'>
+
+<!--
+	    <div style="color: #16b1f8; background: #f8f363; padding: 5px;">
+		Рекомендации:
+	    </div>
+	    <div style="padding: 5px 10px; background: #fff; text-align: left;">
+		<small><?php echo $recommends; ?></small>
+	    </div>
+-->
+
+	    <div style="color: #16b1f8; background: #f8f363; padding: 5px;">
+		Отмеченные жалобы:
+	    </div>
+	    <div style="padding: 5px 10px; background: #fff;">
+		<?php echo $simptoms; ?>
+	    </div>
+
+	    <div style="color: #16b1f8; background: #f8f363; padding: 5px;">
+		Пожалуйста, укажите Ваши жалобы:
+	    </div>
+	    <div style="padding: 5px 10px; background: #fff;">
+		<?php echo $question; ?>
+	    </div>
+
+	    <div style="padding: 5px 10px; white-space: normal;">
+		<button type=submit name=data[<?php echo $request; ?>] value='1'>Да</button>
+		<button type=submit name=data[<?php echo $request; ?>] value='0'>Нет</button>
+	    </div>
+
+	</div>
+
+    </form>
+</center>
