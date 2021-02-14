@@ -1,0 +1,17 @@
+<div class='border'>
+<div style="color: #16b1f8; background: #f8f363; padding: 5px;">
+Выберите схему:
+</div>
+<div style='display: inline-block; text-align: left; background: #fff; padding: 5px;'>
+<?php echo $names; ?>
+</div>
+</div>
+
+<div id=tests>
+</div>
+
+<script type="text/javascript">
+$("input").on('click',function() {
+    $("#tests").load("load_tests.php","file="+$("input[name=datafile]:checked").val()+"&id="+$("input[name=cat]:checked").val());
+});
+</script>

@@ -1,0 +1,59 @@
+
+body {
+#	background: url(img/background.jpg) center center no-repeat;
+	max-width: 1200px;
+	text-align: center;
+}
+
+header {
+	background: url(img/head2.jpg) center center no-repeat;
+	text-align: center;
+}
+
+label {
+}
+
+#footer {
+#    background: #f8f363; ;
+#}
+
+.footer {
+    background: #f8f363;
+    text-align: right;
+}
+
+.actions {
+    padding: 20px;
+}
+
+.test_title {
+    background-color: #55aaff;
+}
+
+.test_list {
+    background: #ffaaff;
+    display: inline-block;
+    text-align: left;
+    outline: 2px solid;
+    padding: 10px;
+}
+
+.test {
+    color: #666;
+}
+
+.test:hover {
+    color: #000;
+}
+
+.border {
+	outline: 1px solid #16b1f8;
+	display: inline-block;
+	background-color: #fff;
+	margin: 5px 0px 5px 0px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+p {
+    text-indent: 20px; /* Отступ первой строки в пикселах */
+   }

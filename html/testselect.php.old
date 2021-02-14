@@ -1,0 +1,137 @@
+<?php
+
+#
+# HTML view and modify calls database
+#
+# Copyright Sergey I. Lang
+# 2018
+#
+
+include "config/config.php";
+include "funcs/funcs.php";
+
+function read_parent_data($datafile, $id)
+{
+	global $data_files;
+	$arr = array();
+
+	$test_list = read_tests();
+	$data = read_category($data_files."/".$datafile.".txt");
+	var_dump($data);
+
+?>
+
+<center>
+
+<form method=POST>
+
+<?php
+	echo "<input type=hidden name=datafile value=".$datafile.">";
+
+	if (isset($_REQUEST['tests'])) {
+		$tests = $_REQUEST['tests'];
+		var_dump($tests);
+	}
+
+	$tests = array();
+	if (isset($_REQUEST['tests'])) {
+		$tests = $_REQUEST['tests'];
+	}
+	$tests = array_unique($tests);
+	foreach ($tests as $val) {
+		echo "<input type=hidden name=tests[] value=".$val.">";
+	}
+
+#	var_dump($tests);
+?>
+
+<div>
+<h3>Выбор одного или нескольких тестов:</h3>
+</div>
+
+<div style="outline: 1px solid; display: inline-block;">
+<div style="color: #fff; background: #9f9f9f;">
+Если Вы знаете, к какой части тела или системе организма относится ваще заболевание,
+ищите тесты по этому списку. Под каждым заголовком перечислены тесты, относящиеся к конкретной системе организма
+или органу. Выберите тест, название которого больше всего вам подходит.
+</div>
+
+<div style="padding: 0px 10px;">
+<?php echo $data[$id][0]; ?>
+</div>
+<div style="color: #fff; background: #9f9f9f;">
+такие, как:
+</div>
+<div style="text-align: left; padding: 0px 10px;">
+<?php
+#	$diags = explode(",", $arr[$id][2]);
+	foreach ($data[$id][1] as $val) {
+		$check = "";
+		if ($val and in_array($val, $tests)) $check = "checked";
+		$fe = "disabled";
+		if (file_exists($data_files."/".$val.".txt")) $fe = "";
+		echo "<input type=checkbox name=tests[] value=".$val." ".$check." ".$fe.">".$test_list[$val]."</input>";
+	}
+?>
+</div>
+
+<div style="padding: 0px 10px 10px 10px;">
+<?php
+if ($id > 0) {
+	$v = $id-1;
+	$dis = "";
+}
+else {
+	$v = $id;
+	$dis = "disabled class=disabled";
+}
+echo "<button type=submit name=id value=". $v ." ".$dis.">Назад</button>";
+
+if (isset($_REQUEST['tests']) && count($_REQUEST['tests']) > 0)
+    $dis = "";
+else
+    $dis = "disabled class=disabled";
+echo "<button type=submit name=id formaction=\"testrun.php\">Начать тестирование</button>";
+
+if ($id < count($data)-1) {
+	$v = $id+1;
+	$dis = "";
+}
+else {
+	$v = $id;
+	$dis = "disabled class=disabled";
+}
+echo "<button type=submit name=id value=". $v ." ".$dis.">Вперед</button>";
+echo "<button type=submit name=clear value=1>Очистить</button>";
+?>
+
+</div>
+</form>
+
+</center>
+
+<?php
+}
+
+include 'view/top.phtml';
+
+if (!isset($_SESSION['login'])) {
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_REQUEST['datafile'])) {
+	if (isset($_POST['clear'])) {
+		unset($_SESSION['tests']);
+	}
+	$datafile = $_REQUEST['datafile'];
+	$id = (isset($_REQUEST['id'])) ? $_REQUEST['id'] : 0;
+	read_parent_data($datafile, $id);
+}
+else {
+    include 'view/category.phtml';
+#	read_category();
+}
+
+include 'view/footer.phtml';
+?>

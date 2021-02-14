@@ -1,0 +1,12 @@
+<div style="padding: 10px;">
+    <form method=POST>
+        <div style="outline: 1px solid #16b1f8; display: inline-block; padding: 0px 5px; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+        <div style='padding: 5px;'>
+	    <?php echo $list_tests; ?>
+	</div>
+	</div>
+	<div style="padding: 10px 0px 0px;">
+	    <button action=submit formaction=testrun.php>Начать тестирование</button>
+	</div>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<center>
+
+<div class='border'>
+<div style="color: #16b1f8; background: #f8f363; padding: 5px;">
+Выберите пол или возраст:
+</div>
+<div style='display: inline-block; text-align: left; background: #fff; padding: 5px;'>
+<form method=POST>
+    <div>
+        <label><input class='sel' name='datafile' type='radio' value="children1">
+        Ребенок</label>
+    </div>
+    <div>
+        <label><input class='sel' name='datafile' type='radio' value="woman">
+        Женщина</label>
+    </div>
+    <div>
+        <label><input class='sel' name='datafile' type='radio' value="men">
+        Мужчина</label>
+    </div>
+</form>
+</div>
+</div>
+
+<div id="category">
+</div>
+
+</center>
+
+<script type="text/javascript">
+    $("input").on('click',function() {
+        $("#category").load("load_datafile.php","file="+$("input[name=datafile]:checked").val());
+    });
+</script>
