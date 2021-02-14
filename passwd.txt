@@ -1,3 +1,0 @@
-admin:$2y$10$i/qan3XQcp4wxrAT7tIvKuMqYqGY3HVFEsXZE50fr0HEfW.ByZPHC:lsi@lserg.ru:Administrator:yyy
-user:$2y$10$xmNqbljeirmZNfmwzndytu3s2GPUl8Iic35xYUP32sYbS/hlW0WW.:lsi@lserg.ru:user1:yyy
-lsi:$2y$10$YmVgS1hw88/gbm8Xa574eufHW.NlhmEDHY83gCwla2XSPd.jb7okS:lsi@lserg.ru:Sergey I. Lang:yyy
