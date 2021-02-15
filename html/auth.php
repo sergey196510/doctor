@@ -39,18 +39,18 @@ if (isset($_POST['password'])) {
 if (isset($username) && isset($password)) {
     file_put_contents($logfile, $username.":".$password."\n", FILE_APPEND);
     if (($data = get_user($username)) !== false) {
-	file_put_contents($logfile, "2\n", FILE_APPEND);
+#	file_put_contents($logfile, "2\n", FILE_APPEND);
         $login = $data[0];
         $pass  = $data[1];
         $fullname = $data[2];
         $privs = $data[3];
         if ($pass != crypt($password, $pass)) {
-	    file_put_contents($logfile, "3\n", FILE_APPEND);
+#	    file_put_contents($logfile, "3\n", FILE_APPEND);
             syslog(LOG_WARNING, "Unknown username or password: $username");
             file_put_contents($logfile, "Неверное имя пользователя или пароль\n", FILE_APPEND);
         }
         else {
-	    file_put_contents($logfile, "4\n", FILE_APPEND);
+#	    file_put_contents($logfile, "4\n", FILE_APPEND);
             syslog(LOG_INFO, "User is active: $login");
             $_SESSION['username'] = $fullname;
             $_SESSION['login']    = $login;
@@ -60,7 +60,7 @@ if (isset($username) && isset($password)) {
         }
     }
     else {
-	file_put_contents($logfile, "5\n", FILE_APPEND);
+#	file_put_contents($logfile, "5\n", FILE_APPEND);
         syslog(LOG_WARNING, "Unknown username or password: $username");
         file_put_contents($logfile, "имя пользователя не найдено\n", FILE_APPEND);
     }
