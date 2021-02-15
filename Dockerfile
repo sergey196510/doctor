@@ -10,6 +10,7 @@ RUN ln -s ../sites-available/default-ssl.conf .
 WORKDIR /etc/apache2/mods-enabled
 RUN ln -s ../mods-available/ssl.conf . && ln -s ../mods-available/ssl.load . && ln -s ../mods-available/socache_shmcb.load .
 
+RUN rm -f /var/www/html/index.html
 COPY html /var/www/html
 
 EXPOSE 80
