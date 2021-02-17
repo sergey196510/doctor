@@ -54,7 +54,7 @@ elseif (isset($_GET['login']) and isset($_GET['pass1']) and isset($_GET['pass2']
 	echo "Пароли не совпадают";
     }
     else {
-	$pass = password_hash($_GET['pass1'], PASSWORD_DEFAULT);
+	$pass = password_hash($_GET['pass1'], PASSWORD_BCRYPT);
 #	echo $_GET['pass1'].' '.$pass.'<br>';
 	$filename = 'register/'.generate_str(40);
 	$fp = fopen($filename, 'w') or die("Can't write to file ".$filename);

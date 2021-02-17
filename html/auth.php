@@ -3,8 +3,8 @@
 #
 # HTML view and modify calls database
 #
-# Copyright Sergey I. Lang
-# 2018
+# Copyright: Sergey I. Lang
+# 2018-2021
 #
 
 include 'view/top.phtml';
@@ -44,7 +44,7 @@ if (isset($username) && isset($password)) {
         $pass  = $data[1];
         $fullname = $data[2];
         $privs = $data[3];
-        if ($pass != crypt($password, $pass)) {
+        if (password_verify($password, $pass) == false) {
 #	    file_put_contents($logfile, "3\n", FILE_APPEND);
             syslog(LOG_WARNING, "Unknown username or password: $username");
             file_put_contents($logfile, "Неверное имя пользователя или пароль\n", FILE_APPEND);
